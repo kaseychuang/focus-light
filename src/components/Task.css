@@ -1,0 +1,17 @@
+.description{
+    font-size: 1em;
+    margin-right: 1em;
+}
+
+.completed{
+    text-decoration: line-through;
+}
+
+.task-element{
+    display: inline-block;
+}
+
+.task{
+    margin: auto;
+}
+

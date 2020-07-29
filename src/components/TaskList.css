@@ -1,0 +1,9 @@
+.task-list{
+    border: solid;
+    text-align: center;
+    display:inline-block;
+    height: 100%;
+    width: 50%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
