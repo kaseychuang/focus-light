@@ -4,7 +4,7 @@ import TaskList from './TaskList';
 const App = () => {
     return (
         <div className="container">
-            <TaskList />
+            <TaskList title = "Tuesday Tasks"/>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Task from './Task';
 import './TaskList.css';
 
@@ -24,11 +24,12 @@ const TaskList = (props) => {
     })
 
     return (
-        <div className="container task-list">
-            <h1>{props.title || "My Tasks"}</h1>
+        <div id = "task-list" className="container task-list">
+            <h1 id = "title">{props.title || "My Tasks"}</h1>
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <input
+                        id = "task-input"
                         className="mr-2"
                         placeholder="task description"
                         type="text" name="description"
@@ -36,11 +37,11 @@ const TaskList = (props) => {
                         value={taskToAdd}
                         onChange={(e) => { setTaskToAdd(e.target.value) }}
                     />
-                    <button className="btn btn-primary btn-sm" type="submit">Add Task</button>
+                    <button id = "add-button" className="btn btn-success btn-sm" type="submit">Add Task</button>
                 </div>
             </form>
             <div className="container">
-                    {renderedTasks}
+                {renderedTasks}
             </div>
         </div>
     )

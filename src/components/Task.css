@@ -9,9 +9,15 @@
 
 .task-element{
     display: inline-block;
-}
+} 
 
 .task{
     margin: auto;
+    text-align: left;
 }
+
+.checkbox{
+    float:right;
+}
+
 

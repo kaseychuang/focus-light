@@ -21,14 +21,14 @@ const Task = (props) => {
     }
 
     return (
-        <div className = "container">
-            <span className="task">
+        // <div className = "container">
+            <div className="task">
                 <p className={`description task-element ${complete}`}>{props.task.description}  </p>
-                <div className = "task-element" onClick={completeTask}>
+                <div className = "task-element checkbox" onClick={completeTask}>
                     {checkbox}
                 </div>
-            </span>
-        </div>
+            </div>
+        // </div>
 
 
     )
