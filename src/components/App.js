@@ -1,12 +1,13 @@
 import React from 'react';
 import TaskList from './TaskList';
+import {withCookies} from 'react-cookie';
 
-const App = () => {
+const App = (props) => {
     return (
         <div className="container">
-            <TaskList title = "Tuesday Tasks"/>
+            <TaskList cookies = {props.cookies} title = "Tuesday Tasks"/>
         </div>
     )
 }
 
-export default App;
+export default withCookies(App);
