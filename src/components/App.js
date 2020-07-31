@@ -1,11 +1,20 @@
 import React from 'react';
 import TaskList from './TaskList';
-import {withCookies} from 'react-cookie';
+import Timer from "./Timer";
+import { withCookies } from 'react-cookie';
 
 const App = (props) => {
     return (
         <div className="container">
-            <TaskList cookies = {props.cookies} title = "Tuesday Tasks"/>
+            <div className="row">
+                <div className="col-6">
+                    <TaskList cookies={props.cookies} title="Tuesday Tasks" />
+                </div>
+                <div className="col-6">
+                    <Timer />
+                </div>
+            </div>
+
         </div>
     )
 }
