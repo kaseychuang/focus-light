@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Task from './Task';
+import ConfirmModal from './ConfirmModal.js';
 import './TaskList.css';
 
 // Props
@@ -8,11 +9,12 @@ import './TaskList.css';
 const TaskList = (props) => {
     const [taskToAdd, setTaskToAdd] = useState("");
     const [tasks, setTasks] = useState(props.cookies.get('tasks'));
+    const [empty, setEmpty] = useState(true);
 
     // Update cookies 
     useEffect(() => {
         props.cookies.set('tasks', tasks, { path: '/' });
-        console.log(props.cookies.get('tasks'));
+        tasks.length === 0 ? setEmpty(true) : setEmpty(false);
     }, [tasks])
 
     // Add new task handler
@@ -32,6 +34,15 @@ const TaskList = (props) => {
         return (<Task key={task.description} task={task} />)
     })
 
+    const confirmClearModal = (
+        <ConfirmModal 
+        onClick = {() => setTasks([])} 
+        body = "Deleted tasks cannot be recovered" 
+        question = "Are you sure you want to delete all tasks?" 
+        button-text = "Yes, Clear All">
+        </ConfirmModal>
+    )
+
     return (
         <div id="task-list" className="container task-list">
             <h1 id="title">{props.title || "My Tasks"}</h1>
@@ -49,9 +60,15 @@ const TaskList = (props) => {
                     <button id="add-button" className="btn btn-success btn-sm" type="submit">Add Task</button>
                 </div>
             </form>
-            <div className="container">
+            
+            <div className="container" id="list">
                 {renderedTasks}
             </div>
+
+            <div className="container options">
+                {!empty && confirmClearModal}
+            </div>
+
         </div>
     )
 }
