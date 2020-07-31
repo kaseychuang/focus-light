@@ -15,7 +15,7 @@ const TaskList = (props) => {
     useEffect(() => {
         props.cookies.set('tasks', tasks, { path: '/' });
         tasks.length === 0 ? setEmpty(true) : setEmpty(false);
-    }, [tasks])
+    }, [tasks, props.cookies])
 
     // Add new task handler
     const onSubmit = (e) => {
@@ -60,7 +60,7 @@ const TaskList = (props) => {
                     <button id="add-button" className="btn btn-success btn-sm" type="submit">Add Task</button>
                 </div>
             </form>
-            
+
             <div className="container" id="list">
                 {renderedTasks}
             </div>

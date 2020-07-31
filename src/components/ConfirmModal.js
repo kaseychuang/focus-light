@@ -6,16 +6,11 @@ import React from 'react';
 // button-text
 // onClick
 const ConfirmModal = (props) => {
-
-    const onClick = () => {
-        {props.onClick()}
-    }
-
     return (
         <div>
             <button data-toggle = "modal" data-target = "#confirmClear" className="btn btn-danger btn-sm">Clear All Tasks</button>
             {/* <!-- Modal --> */}
-            <div className="modal fade" id="confirmClear" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="confirmClear" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -29,7 +24,7 @@ const ConfirmModal = (props) => {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" onClick={onClick} data-dismiss= "modal" className="btn btn-danger">Yes, Delete All</button>
+                            <button type="button" onClick={props.onClick} data-dismiss= "modal" className="btn btn-danger">Yes, Delete All</button>
                         </div>
                     </div>
                 </div>

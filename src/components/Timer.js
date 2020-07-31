@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Timer.css';
 
 // props
@@ -6,69 +6,90 @@ import './Timer.css';
 const Timer = (props) => {
     const [isRunning, setRunning] = useState(true);
     const [seconds, setSeconds] = useState(10);
-    const [minutes, setMinutes] = useState(1);
+    const [minutes, setMinutes] = useState(0);
     const [hours, setHours] = useState(0);
 
+    // timer set up 
     useEffect(() => {
-        calculateTime();
-    }, [])
+        setTime(props.time);
+    }, [props.time])
 
-    // useEffect(() => {
-    //     if (isRunning){}
-    // }, [isRunning])
-
-    const myInterval = setInterval(() => {
-        // check if we need to change minutes
-        console.log(isRunning);
-        if (isRunning){
-            if (seconds > 0){
-                setSeconds(seconds - 1);
-            }
-            if (seconds === 0){
-                if (minutes === 0){
-                    if (hours === 0){
-                        clearInterval(myInterval);
-                    }else{
-                        setHours(hours - 1);
-                        setMinutes(59);
+    // Sets up Interval to make time count down
+    useEffect(() => {
+        let interval = null;
+        if (isRunning) {
+            interval = setInterval(() => {
+                if (seconds > 0) {
+                    setSeconds(seconds - 1);
+                }
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        if (hours === 0) {
+                            clearInterval(interval);
+                        } else {
+                            setHours(hours - 1);
+                            setMinutes(59);
+                        }
+                    }
+                    else {
+                        setMinutes(minutes - 1);
+                        setSeconds(59);
                     }
                 }
-                else{
-                    setMinutes(minutes - 1);
-                    setSeconds(59);
-                }
-            }
+            }, 1000);
+        } else if (!isRunning || (seconds === 0 && minutes === 0 && hours === 0)) {
+            clearInterval(interval);
+            setRunning(false);
         }
-    }, 1000)
+        return () => clearInterval(interval);
+    }, [isRunning, seconds, minutes, hours])
 
-    const calculateTime = () => {
-        // calculate time and set state according to given time from props! 
-        const time = props.time;
+    // Sets Time given time in SECONDS
+    const setTime = (time) => {
+        time = time || 60; // make default 60 seconds
+        const numHours = Math.floor(time /3600);
+        time = time - (numHours * 3600)
+        const numMin = Math.floor(time / 60);
+        const numSec = time - (numMin * 60);
+        setHours(numHours);
+        setMinutes(numMin);
+        setSeconds(numSec);
+    }
 
-        
+    // Resets the timer 
+    const reset = () => {
+        setRunning(false);
+        setTime(props.time);
+    }
+
+    // CONDITIONAL RENDERING
+    const button = () => {
+        if (isRunning) {
+            return (<button onClick={() => { setRunning(false) }} className="btn btn-danger btn-block">Stop</button>)
+        }
+        else {
+            return (<button onClick={() => { setRunning(true) }} className="btn btn-primary btn-block">Start</button>)
+        }
     }
 
     return (
-            <div id="timer">
-                <h1>TIMER</h1>
-                <div id="face">
-                    <h1 id="time" >
-                    {hours < 10? `0${hours}`:hours}:{minutes < 10? `0${minutes}`:minutes}:{seconds < 10? `0${seconds}`:seconds}
-                    </h1>
-                </div>
+        <div id="timer">
+            <h1>TIMER</h1>
+            <div id="face">
+                <h1 id="time" >
+                    {hours < 10 ? `0${hours}` : hours}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+                </h1>
+            </div>
 
-                <div id="buttons" className="row">
-                    <div className="col-4">
-                        <button onClick = {() => {setRunning(true)}} className="btn btn-primary btn-block">Start</button>
-                    </div>
-                    <div className="col-4">
-                        <button onClick = {() => {setRunning(false)}} className="btn btn-danger btn-block">Stop</button>
-                    </div>
-                    <div className="col-4">
-                        <button className="btn btn-dark btn-block">Reset</button>
-                    </div>
+            <div id="buttons" className="row">
+                <div className="col-6">
+                    {button()}
+                </div>
+                <div className="col-6">
+                    <button onClick={reset} className="btn btn-dark btn-block">Reset</button>
                 </div>
             </div>
+        </div>
     )
 }
 
