@@ -1,0 +1,19 @@
+#timer{
+    border: solid;
+    text-align: center;
+    padding: 1em;
+}
+
+#face{
+    border: solid;
+}
+
+#time{
+    margin-bottom: 0;
+    font-size: 5em;
+}
+
+#buttons{
+    padding: 3%;
+}
+
