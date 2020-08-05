@@ -73,9 +73,9 @@ const Timer = (props) => {
     }
 
     return (
-        <div id="timer">
+        <div class = "container" id="timer">
             <h1>TIMER</h1>
-            <div id="face">
+            <div class = "container" id="face">
                 <h1 id="time" >
                     {hours < 10 ? `0${hours}` : hours}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
                 </h1>

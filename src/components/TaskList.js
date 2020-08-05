@@ -8,7 +8,7 @@ import './TaskList.css';
 // cookies
 const TaskList = (props) => {
     const [taskToAdd, setTaskToAdd] = useState("");
-    const [tasks, setTasks] = useState(props.cookies.get('tasks'));
+    const [tasks, setTasks] = useState([]);
     const [empty, setEmpty] = useState(true);
 
     // Update cookies 
@@ -30,9 +30,18 @@ const TaskList = (props) => {
     }
 
     // Generate Task Components
-    const renderedTasks = tasks.map((task) => {
-        return (<Task key={task.description} task={task} />)
-    })
+    const renderedTasks = () => {
+        if (tasks.length !== 0 ) {
+            return tasks.map((task) => {
+                return (<Task key={task.description} task={task} />)
+            })
+        }
+        else{
+            console.log("no tasks");
+            return null;
+        }
+        
+    } 
 
     const confirmClearModal = (
         <ConfirmModal 
@@ -62,7 +71,7 @@ const TaskList = (props) => {
             </form>
 
             <div className="container" id="list">
-                {renderedTasks}
+                {renderedTasks()}
             </div>
 
             <div className="container options">
