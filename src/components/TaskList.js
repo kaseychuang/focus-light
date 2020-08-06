@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Task from './Task';
 import ConfirmModal from './ConfirmModal.js';
 import './TaskList.css';
-import { isCompositeComponent } from 'react-dom/test-utils';
 
 // Props
 // title: title of the list (default = My Tasks)
@@ -17,7 +16,7 @@ const TaskList = (props) => {
         if (props.cookies.get('tasks')){
             setTasks(props.cookies.get('tasks'))
         }
-    }, [])
+    }, [props.cookies])
 
     // Update cookies 
     useEffect(() => {

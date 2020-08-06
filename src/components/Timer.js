@@ -53,7 +53,7 @@ const Timer = (props) => {
             setRunning(false);
         }
         return () => clearInterval(interval);
-    }, [isRunning, seconds, minutes, hours])
+    }, [isRunning, seconds, minutes, hours, alert])
 
     // Sets Time given time in SECONDS
     const setTime = (time) => {
