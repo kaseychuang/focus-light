@@ -16,7 +16,7 @@ const App = (props) => {
                     <TaskList cookies={props.cookies} title="Tuesday Tasks" />
                 </div>
                 <div className="col-6">
-                    <Timer time = {3600}/>
+                    <Timer time = {5}/>
                 </div>
             </div>
 

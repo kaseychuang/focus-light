@@ -24,8 +24,8 @@ const Quote = () => {
     return (
         <div id = "quote-box" className = "container">
             <h5 id = "quote">"{quote}"</h5>
-            <h6 id = "quthor">- {author}</h6>
-            
+            <h6 id = "author">- {author || "Unknown"}</h6>
+            {/* <button className = "btn btn-sm btn-info" onClick = {() => getQuote()}>new quote</button> */}
         </div>
     )
 
