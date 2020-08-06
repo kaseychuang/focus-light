@@ -6,7 +6,7 @@ import alertAudio from '../alert.mp3';
 // props
 // time: given in seconds 
 const Timer = (props) => {
-    const [isRunning, setRunning] = useState(true);
+    const [isRunning, setRunning] = useState(false);
     const [seconds, setSeconds] = useState(10);
     const [minutes, setMinutes] = useState(0);
     const [hours, setHours] = useState(0);
