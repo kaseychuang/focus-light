@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Timer.css';
+import UIfx from 'uifx';
+import alertAudio from '../alert.mp3';
 
 // props
 // time: given in seconds 
@@ -8,6 +10,14 @@ const Timer = (props) => {
     const [seconds, setSeconds] = useState(10);
     const [minutes, setMinutes] = useState(0);
     const [hours, setHours] = useState(0);
+
+    const alert = new UIfx(
+        alertAudio, 
+        {
+            volume: 0.5, 
+            throttleMs: 100
+        }
+    )
 
     // timer set up 
     useEffect(() => {
@@ -25,6 +35,7 @@ const Timer = (props) => {
                 if (seconds === 0) {
                     if (minutes === 0) {
                         if (hours === 0) {
+                            alert.play();
                             clearInterval(interval);
                         } else {
                             setHours(hours - 1);
@@ -73,10 +84,10 @@ const Timer = (props) => {
     }
 
     return (
-        <div class = "container" id="timer">
+        <div className = "container" id="timer">
             <h1>TIMER</h1>
-            <div class = "container" id="face">
-                <h1 id="time" >
+            <div className = "container" id="face">
+                <h1 className = "container-fluid" id="time" >
                     {hours < 10 ? `0${hours}` : hours}:{minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
                 </h1>
             </div>
