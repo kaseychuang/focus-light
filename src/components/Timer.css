@@ -1,12 +1,16 @@
 #timer{
-    border: solid;
+    /* border: solid; */
     text-align: center;
     padding: 1em;
+    background-color: #fff2cf;
+    border-radius: 25px;
+
 }
 
 #face{
     border: solid;
     height: 12vh;
+    background-color: white;
 }
 
 #time{

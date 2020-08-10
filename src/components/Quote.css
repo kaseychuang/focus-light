@@ -1,8 +1,6 @@
 #quote-box{
-    border: solid;
-    padding: 1%;
-    padding-bottom: 0.5%;
-    /* padding: 1%, 1%, 1%, 1%; */
+    padding-bottom: 1%;
     margin-bottom: 1%;
     align-items: center;
+
 }

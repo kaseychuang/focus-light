@@ -13,7 +13,8 @@ const App = (props) => {
         "10 minutes": 600, 
         "20 minutes": 1200, 
         "30 minutes" : 1800,
-        "1 hour": 3600
+        "1 hour": 3600, 
+        "2 hours": 7200
     }
     
     const setTimer = (newTime) => {
