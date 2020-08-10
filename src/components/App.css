@@ -5,7 +5,13 @@
 #brand{
     font-size: 5em;
     text-decoration: bold;
-    background-color: lightgoldenrodyellow;
-    margin-bottom: 3%;
+    margin-bottom: 2%;
     margin-top: 3%;
+    border-bottom: solid;
+    padding-bottom: 1%;
+
+}
+
+body{
+    background-color: #fff8e3;
 }

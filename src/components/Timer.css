@@ -2,8 +2,9 @@
     /* border: solid; */
     text-align: center;
     padding: 1em;
-    background-color: #fff2cf;
-    border-radius: 25px;
+    background-color: white;
+    border-radius: 10px;
+    border-style: groove;
 
 }
 
@@ -11,6 +12,8 @@
     border: solid;
     height: 12vh;
     background-color: white;
+    /* border-style: inset; */
+    border-color: gray;
 }
 
 #time{
