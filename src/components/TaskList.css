@@ -24,6 +24,8 @@
 #list{
     padding-right: 5%;
     padding-left: 5%;
+    height: 300px;
+    overflow: auto;
 }
 
 
